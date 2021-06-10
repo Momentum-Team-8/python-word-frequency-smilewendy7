@@ -1,4 +1,5 @@
-
+import re
+import string
 
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
@@ -6,23 +7,18 @@ STOP_WORDS = [
     'will', 'with', ''
 ]
 
-
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
 
-    # with open(file) as the_hill_we_climb:
-    #     text = the_hill_we_climb.read().lower()
-    #     str = repr(text[0:-1])
-    #     print(str)
+    with open(file) as homework:
+        text = homework.read().lower()
 
     #     print(str.strip(".,'"))
-    import re
-    import string
-    file = open("praise_song_for_the_day.txt")
-    text = file.read().lower()
+    # file = open("praise_song_for_the_day.txt")
+    # text = file.read().lower()
 
     # success!!! *****************************
-    text_split = re.split("[' '\n’]", text)
+    text_split = re.split("[' '\n]", text)
     # text = file.read().split(" ")
     # print(text_split)
 
@@ -43,7 +39,7 @@ def print_word_freq(file):
     for element in STOP_WORDS:
         while element in text_no_punctuation:
             text_no_punctuation.remove(element)
-    
+
     print(text_no_punctuation)
 
     # print(text_no_punctuation.remove(element))
@@ -62,7 +58,7 @@ def print_word_freq(file):
     result ={}
     for word in text_no_punctuation:
         # print(word)
-        result[f"{word}"]= text_no_punctuation.count(word)
+        result[word]= text_no_punctuation.count(word)
     print(result)
     #     print(f" {word}, {text_no_punctuation.count(word)} ")
     # return text_no_punctuation.count(word)
